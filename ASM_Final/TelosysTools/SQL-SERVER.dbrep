@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Telosys Database Repository --><root>
+    <tableList databaseId="0" databaseName="SQL-SERVER" databaseProductName="Microsoft SQL Server" generation="2023-05-24 16:57:43">
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="Account" name="account" schema="dbo">
+            <column dbComment="" dbDefaultValue="" dbName="username" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="username" javaType="java.lang.String" jdbcTypeCode="-9" label="Username" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="fullname" dbNotNull="true" dbPosition="2" dbSize="100" dbTypeName="nvarchar" inputType="" javaName="fullname" javaType="java.lang.String" jdbcTypeCode="-9" label="Fullname" maxLength="100" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="email" dbNotNull="true" dbPosition="3" dbSize="45" dbTypeName="varchar" inputType="text" javaName="email" javaType="java.lang.String" jdbcTypeCode="12" label="Email" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="nphone" dbNotNull="true" dbPosition="4" dbSize="45" dbTypeName="varchar" inputType="text" javaName="nphone" javaType="java.lang.String" jdbcTypeCode="12" label="Nphone" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="password" dbNotNull="true" dbPosition="5" dbSize="45" dbTypeName="varchar" inputType="text" javaName="password" javaType="java.lang.String" jdbcTypeCode="12" label="Password" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address" dbNotNull="true" dbPosition="6" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="address" javaType="java.lang.String" jdbcTypeCode="-9" label="Address" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="photo" dbNotNull="false" dbPosition="7" dbSize="45" dbTypeName="varchar" inputType="text" javaName="photo" javaType="java.lang.String" jdbcTypeCode="12" label="Photo" maxLength="45" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="role" dbNotNull="true" dbPosition="8" dbSize="1" dbTypeName="bit" inputType="checkbox" javaName="role" javaType="java.lang.Boolean" jdbcTypeCode="-7" label="Role" notNull="true" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="FK__order__userid__30C33EC3" id="LINK_FK_FK__order__userid__30C33EC3_I" inverseSideOf="LINK_FK_FK__order__userid__30C33EC3_O" javaName="listOfOrder" javaType="unused" joinTableName="" mappedBy="account" optional="" owningSide="false" sourceTableName="account" targetEntity="Order" targetTableName="order" used="true"/>
+        </table>
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="Category" name="category" schema="dbo">
+            <column dbComment="" dbDefaultValue="" dbName="categoryId" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="categoryid" javaType="java.lang.String" jdbcTypeCode="-9" label="Categoryid" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="categoryName" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="categoryname" javaType="java.lang.String" jdbcTypeCode="-9" label="Categoryname" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="notes" dbNotNull="false" dbPosition="3" dbSize="100" dbTypeName="nvarchar" inputType="" javaName="notes" javaType="java.lang.String" jdbcTypeCode="-9" label="Notes" maxLength="100" notNull="false" selected="true"/>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="FK__product__categor__123EB7A3" id="LINK_FK_FK__product__categor__123EB7A3_I" inverseSideOf="LINK_FK_FK__product__categor__123EB7A3_O" javaName="listOfProduct" javaType="unused" joinTableName="" mappedBy="category" optional="" owningSide="false" sourceTableName="category" targetEntity="Product" targetTableName="product" used="true"/>
+        </table>
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="Order" name="order" schema="dbo">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int identity" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="userid" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="userid" javaType="java.lang.String" jdbcTypeCode="-9" label="Userid" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="total_price" dbNotNull="true" dbPosition="3" dbSize="53" dbTypeName="float" inputType="number" javaName="totalPrice" javaType="java.lang.Double" jdbcTypeCode="8" label="Total price" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="nphone" dbNotNull="true" dbPosition="4" dbSize="45" dbTypeName="varchar" inputType="text" javaName="nphone" javaType="java.lang.String" jdbcTypeCode="12" label="Nphone" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="D" dbComment="" dbDefaultValue="" dbName="date" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="date" inputType="date" javaName="date" javaType="java.util.Date" jdbcTypeCode="91" label="Date" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="address" dbNotNull="true" dbPosition="6" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="address" javaType="java.lang.String" jdbcTypeCode="-9" label="Address" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <fk name="FK__order__userid__30C33EC3">
+                <fkcol colname="userid" colref="username" deferrable="7" deleterule="1" sequence="1" tablename="order" tableref="account" updaterule="1"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="FK__order__userid__30C33EC3" id="LINK_FK_FK__order__userid__30C33EC3_O" inverseSideOf="" javaName="account" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="order" targetEntity="Account" targetTableName="account" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="userid" nullable="true" referencedColumnName="username" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="FK__order_det__order__339FAB6E" id="LINK_FK_FK__order_det__order__339FAB6E_I" inverseSideOf="LINK_FK_FK__order_det__order__339FAB6E_O" javaName="listOfOrderDetail" javaType="unused" joinTableName="" mappedBy="order" optional="" owningSide="false" sourceTableName="order" targetEntity="OrderDetail" targetTableName="order_detail" used="true"/>
+        </table>
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="OrderDetail" name="order_detail" schema="dbo">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="id" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int identity" inputType="number" javaName="id" javaType="java.lang.Integer" jdbcTypeCode="4" label="Id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="orderId" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int" inputType="number" javaName="orderid" javaType="java.lang.Integer" jdbcTypeCode="4" label="Orderid" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="productId" dbNotNull="true" dbPosition="3" dbSize="10" dbTypeName="int" inputType="number" javaName="productid" javaType="java.lang.Integer" jdbcTypeCode="4" label="Productid" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="quantity" dbNotNull="true" dbPosition="4" dbSize="10" dbTypeName="int" inputType="number" javaName="quantity" javaType="java.lang.Integer" jdbcTypeCode="4" label="Quantity" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="price" dbNotNull="true" dbPosition="5" dbSize="53" dbTypeName="float" inputType="number" javaName="price" javaType="java.lang.Double" jdbcTypeCode="8" label="Price" notNull="true" selected="true"/>
+            <fk name="FK__order_det__order__339FAB6E">
+                <fkcol colname="orderId" colref="id" deferrable="7" deleterule="1" sequence="1" tablename="order_detail" tableref="order" updaterule="1"/>
+            </fk>
+            <fk name="FK__order_det__produ__3493CFA7">
+                <fkcol colname="productId" colref="productId" deferrable="7" deleterule="1" sequence="1" tablename="order_detail" tableref="product" updaterule="1"/>
+            </fk>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="FK__order_det__order__339FAB6E" id="LINK_FK_FK__order_det__order__339FAB6E_O" inverseSideOf="" javaName="order" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="order_detail" targetEntity="Order" targetTableName="order" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="orderId" nullable="true" referencedColumnName="id" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="FK__order_det__produ__3493CFA7" id="LINK_FK_FK__order_det__produ__3493CFA7_O" inverseSideOf="" javaName="product" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="order_detail" targetEntity="Product" targetTableName="product" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="productId" nullable="true" referencedColumnName="productId" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="Product" name="product" schema="dbo">
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="productId" dbNotNull="true" dbPosition="1" dbPrimaryKey="true" dbSize="10" dbTypeName="int identity" inputType="number" javaName="productid" javaType="java.lang.Integer" jdbcTypeCode="4" label="Productid" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="product_name" dbNotNull="true" dbPosition="2" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="productName" javaType="java.lang.String" jdbcTypeCode="-9" label="Product name" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="price" dbNotNull="true" dbPosition="3" dbSize="53" dbTypeName="float" inputType="number" javaName="price" javaType="java.lang.Double" jdbcTypeCode="8" label="Price" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="categoryId" dbNotNull="true" dbPosition="4" dbSize="45" dbTypeName="nvarchar" inputType="" javaName="categoryid" javaType="java.lang.String" jdbcTypeCode="-9" label="Categoryid" maxLength="45" notEmpty="true" notNull="true" selected="true"/>
+            <column dateType="D" dbComment="" dbDefaultValue="" dbName="createDate" dbNotNull="true" dbPosition="5" dbSize="10" dbTypeName="date" inputType="date" javaName="createdate" javaType="java.util.Date" jdbcTypeCode="91" label="Createdate" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="describe" dbNotNull="true" dbPosition="6" dbSize="500" dbTypeName="nvarchar" inputType="" javaName="describe" javaType="java.lang.String" jdbcTypeCode="-9" label="Describe" maxLength="500" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="quantity" dbNotNull="true" dbPosition="7" dbSize="10" dbTypeName="int" inputType="number" javaName="quantity" javaType="java.lang.Integer" jdbcTypeCode="4" label="Quantity" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="photo" dbNotNull="true" dbPosition="8" dbSize="200" dbTypeName="varchar" inputType="text" javaName="photo" javaType="java.lang.String" jdbcTypeCode="12" label="Photo" maxLength="200" notEmpty="true" notNull="true" selected="true"/>
+            <fk name="FK__product__categor__123EB7A3">
+                <fkcol colname="categoryId" colref="categoryId" deferrable="7" deleterule="1" sequence="1" tablename="product" tableref="category" updaterule="1"/>
+            </fk>
+            <link cardinality="OneToMany" cascade="" fetch="DEFAULT" foreignKeyName="FK__order_det__produ__3493CFA7" id="LINK_FK_FK__order_det__produ__3493CFA7_I" inverseSideOf="LINK_FK_FK__order_det__produ__3493CFA7_O" javaName="listOfOrderDetail" javaType="unused" joinTableName="" mappedBy="product" optional="" owningSide="false" sourceTableName="product" targetEntity="OrderDetail" targetTableName="order_detail" used="true"/>
+            <link cardinality="ManyToOne" cascade="" fetch="DEFAULT" foreignKeyName="FK__product__categor__123EB7A3" id="LINK_FK_FK__product__categor__123EB7A3_O" inverseSideOf="" javaName="category" javaType="unused" joinTableName="" mappedBy="" optional="" owningSide="true" sourceTableName="product" targetEntity="Category" targetTableName="category" used="true">
+                <joinColumns>
+                    <joinColumn insertable="false" name="categoryId" nullable="true" referencedColumnName="categoryId" unique="false" updatable="false"/>
+                </joinColumns>
+            </link>
+        </table>
+        <table catalog="chicken_app" databaseComment="" databaseType="TABLE" javaBean="Sysdiagrams" name="sysdiagrams" schema="dbo">
+            <column dbComment="" dbDefaultValue="" dbName="name" dbNotNull="true" dbPosition="1" dbSize="128" dbTypeName="sysname" inputType="" javaName="name" javaType="java.lang.String" jdbcTypeCode="-9" label="Name" maxLength="128" notEmpty="true" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="principal_id" dbNotNull="true" dbPosition="2" dbSize="10" dbTypeName="int" inputType="number" javaName="principalId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Principal id" notNull="true" selected="true"/>
+            <column dbAutoIncremented="true" dbComment="" dbDefaultValue="" dbName="diagram_id" dbNotNull="true" dbPosition="3" dbPrimaryKey="true" dbSize="10" dbTypeName="int identity" inputType="number" javaName="diagramId" javaType="java.lang.Integer" jdbcTypeCode="4" label="Diagram id" notNull="true" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="version" dbNotNull="false" dbPosition="4" dbSize="10" dbTypeName="int" inputType="number" javaName="version" javaType="java.lang.Integer" jdbcTypeCode="4" label="Version" notNull="false" selected="true"/>
+            <column dbComment="" dbDefaultValue="" dbName="definition" dbNotNull="false" dbPosition="5" dbSize="2147483647" dbTypeName="varbinary" inputType="" javaName="definition" javaType="byte[]" jdbcTypeCode="-3" label="Definition" notNull="false" selected="true"/>
+        </table>
+    </tableList>
+</root>

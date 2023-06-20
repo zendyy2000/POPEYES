@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Ashion Template">
+<meta name="keywords" content="Ashion, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>POPEYES</title>
+
+<!-- Google Font -->
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Cookie&display=swap}"
+	rel="stylesheet">
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap}"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/elegant-icons.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/slicknav.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+
+	<!-- Header Section Begin -->
+	<div th:include="commons/header :: client_header"></div>
+	<!-- Header Section End -->
+
+	<!-- Banner Section Begin -->
+	<section class="banner set-bg"
+		th:data-setbg="@{/img/banner/banner.png}">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-7 col-lg-8 m-auto">
+					<div class="banner__slider owl-carousel">
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Monday-Delivery Offer</span>
+								<h1>Buy Get 1</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Exclusive Offer</span>
+								<h1>-40%</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<div class="banner__text">
+									<span>Exclusive Offer</span>
+									<h1>-80%</h1>
+									<a href="#">Shop now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Banner Section End -->
+
+	<div style="width: 800px" class="mx-auto mt-3 mb-3">
+		<h2 class="text-danger">Bạn đã đăng nhập bằng tài khoản Google</h2>
+		<p style="font-size: 15px" class="mt-2">
+			Email: <b th:text="${email}"></b>
+		</p>
+		<p style="font-size: 15px" class="mt-2">
+			Tên: <b th:text="${name}"></b>
+		</p>
+	</div>
+	<!-- Footer Section Begin -->
+	<div th:include="commons/footer :: client_footer"></div>
+	<!-- Footer Section End -->
+
+	<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form class="search-model-form">
+				<input type="text" id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
+
+	<!-- Js Plugins -->
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/mixitup.min.js}"></script>
+	<script th:src="@{/js/jquery.countdown.min.js}"></script>
+	<script th:src="@{/js/jquery.slicknav.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.nicescroll.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

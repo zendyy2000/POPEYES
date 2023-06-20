@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Ashion Template">
+<meta name="keywords" content="Ashion, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>POPEYES</title>
+
+<!-- Google Font -->
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Cookie&display=swap}"
+	rel="stylesheet">
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap}"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/elegant-icons.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/slicknav.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Offcanvas Menu Begin -->
+	<div class="offcanvas-menu-overlay"></div>
+	<div class="offcanvas-menu-wrapper">
+		<div class="offcanvas__close">+</div>
+		<ul class="offcanvas__widget">
+			<li><span class="icon_search search-switch"></span></li>
+			<li><a href="#"><span class="icon_heart_alt"></span>
+					<div class="tip">2</div> </a></li>
+			<li><a href="#"><span class="icon_bag_alt"></span>
+					<div class="tip">2</div> </a></li>
+		</ul>
+		<div class="offcanvas__logo">
+			<a href="./index.html"><img src="img/logoWeb.png" alt=""
+				class="w-25"></a>
+		</div>
+		<div id="mobile-menu-wrap"></div>
+		<div class="offcanvas__auth">
+			<a th:href="@{/asm/login}">Login</a> <a th:href="@{/asm/register}">Register</a>
+		</div>
+	</div>
+	<!-- Offcanvas Menu End -->
+
+	<!-- Header Section Begin -->
+	<div th:include="commons/header :: client_header"></div>
+	<!-- Header Section End -->
+
+	<!-- Banner Section Begin -->
+	<section class="banner set-bg"
+		th:data-setbg="@{/img/banner/banner.png}">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-7 col-lg-8 m-auto">
+					<div class="banner__slider owl-carousel">
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Monday-Delivery Offer</span>
+								<h1>Buy Get 1</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Exclusive Offer</span>
+								<h1>-40%</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<div class="banner__text">
+									<span>Exclusive Offer</span>
+									<h1>-80%</h1>
+									<a href="#">Shop now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Banner Section End -->
+
+	<!-- Shop Cart Section Begin -->
+	<section class="shop-cart spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="shop__cart__table">
+						<table>
+							<thead>
+								<tr>
+									<th>Product</th>
+									<th>Price</th>
+									<th>Quantity</th>
+									<th>Total</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody th:each="p : ${cart.items}">
+								<tr>
+									<td class="cart__product__item"><img th:src="${p.photo}"
+										alt="" class="w-25">
+										<div class="cart__product__item__title">
+											<h6 th:text="${p.productName}"></h6>
+											<div class="rating">
+												<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+													class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+													class="fa fa-star"></i>
+											</div>
+										</div></td>
+									<td class="cart__price" th:text="${p.price} + ' VND'"></td>
+									<td class="cart__quantity">
+										<div class="pro-qty">
+											<a class='text-danger' style="width: 38px;"
+												th:href="@{/asm/cart/sub/{id}(id=${p.productid})}"> - </a> <input
+												type="text" th:value="${p.quantity}"> <a
+												class='text-danger' style="width: 38px;"
+												th:href="@{/asm/cart/update/{id}(id=${p.productid})}">+</a>
+										</div>
+									</td>
+									<td class="cart__total" th:text="${p.price * p.quantity} + ' VND'"></td>
+									<td class="cart__close"><a style="font-size: 20px"
+										class="icon_close text-danger"
+										th:href="@{/asm/cart/remove/{id}(id=${p.productid})}"></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="cart__btn">
+						<a th:href="@{/asm/home}">Continue Shopping</a>
+					</div>
+				</div>
+
+				<div class="col-lg-6 col-md-6 col-sm-6">
+					<div class="cart__btn update__btn">
+						<a href="#"><span class="icon_loading"></span> Update cart</a>
+					</div>
+				</div>
+			</div>
+			<div class="mb-2 mt-2">
+				<h3 class="text-danger" th:text="${param.buyMessage}"></h3>
+			</div>
+
+
+			<div class="mb-2 mt-2">
+				<h4 style="font-weight: bold;">Delivery Information</h4>
+			</div>
+			<form th:action="@{/asm/cart/checkout}" class="user" method="post">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="form-group">
+							<input th:name="nphone" type="text"
+								class="form-control form-control-user" id="exampleInputPassword"
+								placeholder="Enter Phone Number"
+								style="border-radius: 25px; height: 55px;">
+						</div>
+						<div class="form-group">
+							<input th:name="address" type="text"
+								class="form-control form-control-user" id="exampleInputPassword"
+								placeholder="Enter Address"
+								style="border-radius: 25px; height: 55px;">
+						</div>
+
+						<div class="text-center">
+							<button class="primary-btn mx-auto p-3" type="submit"
+								style="border: none; border-radius: 25px;">Check Out</button>
+						</div>
+					</div>
+					<div class="col-lg-4 offset-lg-2">
+						<div class="cart__total__procced">
+							<h6>Cart total</h6>
+							<div th:each="p : ${cart.items}">
+								<ul>
+									<li th:text="${p.productName}"></li>Quantity:
+									<span th:text="${p.quantity}"></span>
+								</ul>
+							</div>
+							<ul>
+								<li>Total <span th:text="${cart.getAmount} + ' VND'"></span></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</section>
+	<!-- Shop Cart Section End -->
+
+	<!-- Footer Section Begin -->
+	<div th:include="commons/footer :: client_footer"></div>
+	<!-- Footer Section End -->
+
+		<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form th:action="@{/asm/home/product}" th:method="post"
+				class="search-model-form">
+				<input th:name="keywords" th:value="${keywords}" type="text"
+					id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
+
+	<!-- Js Plugins -->
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/mixitup.min.js}"></script>
+	<script th:src="@{/js/jquery.countdown.min.js}"></script>
+	<script th:src="@{/js/jquery.slicknav.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.nicescroll.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

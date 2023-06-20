@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Ashion Template">
+<meta name="keywords" content="Ashion, unica, creative, html">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>POPEYES</title>
+
+<!-- Google Font -->
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Cookie&display=swap}"
+	rel="stylesheet">
+<link
+	th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap}"
+	rel="stylesheet">
+
+<!-- Css Styles -->
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/elegant-icons.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/slicknav.min.css}"
+	type="text/css">
+<link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+</head>
+
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Offcanvas Menu Begin -->
+	<div class="offcanvas-menu-overlay"></div>
+	<div class="offcanvas-menu-wrapper">
+		<div class="offcanvas__close">+</div>
+		<ul class="offcanvas__widget">
+			<li><span class="icon_search search-switch"></span></li>
+			<li><a href="#"><span class="icon_heart_alt"></span>
+					<div class="tip">2</div> </a></li>
+			<li><a href="#"><span class="icon_bag_alt"></span>
+					<div class="tip">2</div> </a></li>
+		</ul>
+		<div class="offcanvas__logo">
+			<a href="./index.html"><img src="img/logoWeb.png" alt=""
+				class="w-25"></a>
+		</div>
+		<div id="mobile-menu-wrap"></div>
+		<div class="offcanvas__auth">
+			<a th:href="@{/asm/login}">Login</a> <a th:href="@{/asm/register}">Register</a>
+		</div>
+	</div>
+	<!-- Offcanvas Menu End -->
+
+	<!-- Header Section Begin -->
+	<div th:include="commons/header :: client_header"></div>
+	<!-- Header Section End -->
+
+	<!-- Banner Section Begin -->
+	<section class="banner set-bg"
+		th:data-setbg="@{/img/banner/banner.png}">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-7 col-lg-8 m-auto">
+					<div class="banner__slider owl-carousel">
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Monday-Delivery Offer</span>
+								<h1>Buy Get 1</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<span>Exclusive Offer</span>
+								<h1>-40%</h1>
+								<a href="#">Shop now</a>
+							</div>
+						</div>
+						<div class="banner__item">
+							<div class="banner__text">
+								<div class="banner__text">
+									<span>Exclusive Offer</span>
+									<h1>-80%</h1>
+									<a href="#">Shop now</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Banner Section End -->
+
+	<!-- Product Section Begin -->
+	<section class="product spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-4">
+					<div class="section-title">
+						<a th:href="@{/asm/home}"><h4>Product</h4></a>
+					</div>
+				</div>
+				
+				<div th:each="cate : ${cate}">
+					<div class="col-sm-8 col-md-8">
+						<ul class="filter__controls" style="width: 50px; margin-left: 30px;"> 
+							<a th:href="@{/asm/home/cate/} + ${cate.categoryid}">
+								<li  th:text="${cate.categoryname}" data-filter=".bone"></li>
+							</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row property__gallery">
+				<!-- Bone -->
+				<div th:each="p : ${pc}">
+					<div class="col-sm-6 col-md-3 mb-4">
+						<div style="width: 16rem" class="product__item ml-1">
+							<div style="width: 280px" class="product__item__pic set-bg"
+								th:data-setbg="${p.photo}">
+								<ul class="product__hover">
+									<li><a th:href="${p.photo}" class="image-popup"><span
+											class="arrow_expand"></span></a></li>
+									<li><a th:href="@{/product/detail/{productId}(productId=${p.productid})}"><span class="icon_info_alt"></span></a></li>
+									<li><a th:href="@{/asm/cart/add/}+${p.productid}"><span class="icon_bag_alt"></span></a></li>
+								</ul>
+							</div>
+							<div class="product__item__text">
+								<h6>
+									<a th:text="${p.productName}" th:href="@{/product/detail/{productId}(productId=${p.productid})}"> </a>
+								</h6>
+								<div class="rating">
+									<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+										class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+										class="fa fa-star"></i>
+								</div>
+								<div th:text="${p.price} + ' VND'" class="product__price"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Product Section End -->
+
+
+	<!-- Footer Section Begin -->
+	<div th:include="commons/footer :: client_footer"></div>
+	<!-- Footer Section End -->
+
+		<!-- Search Begin -->
+	<div class="search-model">
+		<div class="h-100 d-flex align-items-center justify-content-center">
+			<div class="search-close-switch">+</div>
+			<form th:action="@{/asm/home/product}" th:method="post"
+				class="search-model-form">
+				<input th:name="keywords" th:value="${keywords}" type="text"
+					id="search-input" placeholder="Search here.....">
+			</form>
+		</div>
+	</div>
+	<!-- Search End -->
+
+	<!-- Js Plugins -->
+	<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+	<script th:src="@{/js/bootstrap.min.js}"></script>
+	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	<script th:src="@{/js/mixitup.min.js}"></script>
+	<script th:src="@{/js/jquery.countdown.min.js}"></script>
+	<script th:src="@{/js/jquery.slicknav.js}"></script>
+	<script th:src="@{/js/owl.carousel.min.js}"></script>
+	<script th:src="@{/js/jquery.nicescroll.min.js}"></script>
+	<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>
